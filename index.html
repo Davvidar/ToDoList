@@ -22,17 +22,26 @@
         <div class="add-task">
             <input type="text" id="input" placeholder="Agregar tarea">
             <i id="enter" class="fa fa-plus-circle"></i>
-          
+
         </div>
 
         <div class="task-sec">
+
             <h3>Tareas pendientes</h3>
+
             <ul id="task-list">
-                <!-- <li >
-                    <i class="far fa-circle co" data="realizado" id="0"></i>
-                    <p class="text ">Lorem ipsum dolor sit amet.</p>
-                    <i class="fas fa-trash de" data="realizado" id="0"></i>
-                </li> -->
+
+                <li id="liElement">
+                    <i class="far ${REALIZADO}" data="realizado" id='${id}'></i>
+                    <p class="text ${LINE}" data-id="${id}">${task}</p>
+                    <i class="fas fa-trash de" data="eliminado" id='${id}'></i>
+                    <div class="dropdown">
+                        <button class="dropbtn">Descripción</button>
+                        <div class="dropdown-content">
+                            <p>${descripcion}</p>
+                        </div>
+                    </div>
+                </li> 
 
 
             </ul>
@@ -40,7 +49,8 @@
 
 
     </div>
-<script src="script.js"></script>
+    <script src="script.js"></script>
+
 </body>
 
 </html>

@@ -98,8 +98,37 @@ color: white;
     font-size: 1.2rem;
 }
 .line-through{
-text-decoration: line-through;
-color:aquamarine;
-background-color: yellowgreen;
-
+text-decoration: line-through rgb(234, 234, 234);
+color:rgb(0, 213, 255);
 }
+
+
+
+/* Desplegable */
+.task-sec .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.task-sec .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--purple);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px;
+    z-index: 1;
+}
+
+.task-sec .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.task-sec .dropdown button {
+    background-color: beige;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
