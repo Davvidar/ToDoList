@@ -7,13 +7,27 @@
 :root {
     --white: #fafafb;
     --purple: #9a67ea;
-
+    --orange: #FFB900;
+    --marin: #17181c;
 }
 
 body {
-    background: linear-gradient(to bottom, var(--purple), var(--white));
+    background: linear-gradient(to bottom, var(--orange), var(--mar));
     height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    color: #fff;
+    background: var(--marin);
+    font: 300 1em 'Fira Sans', sans-serif;
+    -webkit-box-pack: center;
+    justify-content: center;
+    align-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: flex;
 }
 
 .container{
@@ -53,6 +67,8 @@ span {
     border: none;
     border-radius: 8px;
     background-color: beige;
+    border: solid 1px;
+    text-align: center;
 }
 
 .add-task i {
@@ -91,7 +107,7 @@ font-size: 25px;
 color: white;
 }
 .task-sec i:hover{
-    color: aqua;
+    color: var(--marin);
     cursor: pointer;
 }
 .task-sec > ul p{
@@ -99,12 +115,19 @@ color: white;
 }
 .line-through{
 text-decoration: line-through rgb(234, 234, 234);
-color:rgb(0, 213, 255);
+color:var(--marin);
+text-decoration: line;
+
 }
 
 
 
 /* Desplegable */
+.task-description{
+    font-size: 10px;
+
+}
+
 .task-sec .dropdown {
     position: relative;
     display: inline-block;
@@ -114,10 +137,12 @@ color:rgb(0, 213, 255);
     display: none;
     position: absolute;
     background-color: var(--purple);
+    border-radius: 15px;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px;
     z-index: 1;
+    
 }
 
 .task-sec .dropdown:hover .dropdown-content {
@@ -125,6 +150,7 @@ color:rgb(0, 213, 255);
 }
 
 .task-sec .dropdown button {
+    font-size: 10px;
     background-color: beige;
     border: none;
     padding: 10px;

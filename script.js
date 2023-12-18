@@ -1,6 +1,7 @@
 const date = document.querySelector("#date-sec")
 const list = document.querySelector("#task-list")
 const input = document.querySelector("#input")
+const descripcionInpunt = document.querySelector('#inputD')
 const btnEnter = document.querySelector("#enter")
 const check = 'fa-check-circle'
 const uncheck = 'fa-circle'
@@ -10,14 +11,14 @@ let listArray
 
 // FECHA //
 const DATE = new Date()
-date.innerHTML = DATE.toLocaleDateString('es', { weekday: 'long', month: 'short', day: 'numeric' })
+date.innerHTML = DATE.toLocaleDateString('es-ES', { weekday: 'long', month: 'short', day: 'numeric' })
 
 // ADD TASKS //
 function addTask(task, id, realizado, eliminado, descripcion) {
     if (eliminado) { return; }
 
-    const REALIZADO = realizado ? check : uncheck
-    const LINE = realizado ? linteThrough : ''
+    const REALIZADO = realizado ?check : uncheck
+    const LINE = realizado ?linteThrough : ''
 
     const liElement = `
         <li id="liElement">
@@ -25,9 +26,9 @@ function addTask(task, id, realizado, eliminado, descripcion) {
             <p class="text ${LINE}" data-id="${id}">${task}</p>
             <i class="fas fa-trash de" data="eliminado" id='${id}'></i>
             <div class="dropdown">
-                <button class="dropbtn">Descripción</button>
+                <button class="offset dropbtn">Descripción</button>
                 <div class="dropdown-content">
-                    <p>${descripcion}</p>
+                <p class="task-description" data-id="${id}">${descripcion}</p>
                 </div>
             </div>
         </li>    
@@ -37,7 +38,7 @@ function addTask(task, id, realizado, eliminado, descripcion) {
 
 btnEnter.addEventListener('click', () => {
     const task = input.value;
-    const descripcion = "Descripción de la tarea"; // Puedes obtener la descripción de alguna manera
+    const descripcion = descripcionInpunt.value;
     if (task) {
         addTask(task, id, false, false, descripcion);
         listArray.push({
@@ -49,6 +50,7 @@ btnEnter.addEventListener('click', () => {
         });
         localStorage.setItem('ToDo', JSON.stringify(listArray));
         input.value = "";
+        descripcionInpunt.value = ""
         id++;
     }
 });
@@ -56,7 +58,7 @@ btnEnter.addEventListener('click', () => {
 document.addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
         const task = input.value;
-        const descripcion = "Descripción de la tarea"; // Puedes obtener la descripción de alguna manera
+        const descripcion = descripcionInpunt.value;
         if (task) {
             addTask(task, id, false, false, descripcion);
             listArray.push({
@@ -68,6 +70,7 @@ document.addEventListener('keyup', function (event) {
             });
             localStorage.setItem('ToDo', JSON.stringify(listArray));
             input.value = "";
+            descripcionInpunt.value = ""
             id++;
         }
     }

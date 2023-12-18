@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sources/style.css">
     <title>TO DO LIST</title>
 </head>
 
@@ -20,9 +21,9 @@
             <span>Registro de tareas</span>
         </div>
         <div class="add-task">
-            <input type="text" id="input" placeholder="Agregar tarea">
+            <input type="text" id="input" placeholder="Tarea">
+            <input type="text" id="inputD" placeholder="Descripción ">
             <i id="enter" class="fa fa-plus-circle"></i>
-
         </div>
 
         <div class="task-sec">
@@ -31,17 +32,17 @@
 
             <ul id="task-list">
 
-                <li id="liElement">
+               <!-- <li id="liElement">
                     <i class="far ${REALIZADO}" data="realizado" id='${id}'></i>
                     <p class="text ${LINE}" data-id="${id}">${task}</p>
                     <i class="fas fa-trash de" data="eliminado" id='${id}'></i>
                     <div class="dropdown">
-                        <button class="dropbtn">Descripción</button>
+                        <button class="offset dropbtn">Descripción</button>
                         <div class="dropdown-content">
-                            <p>${descripcion}</p>
-                        </div>
+                            <p class="text ${LINE}" data-id="${id}">${descripcion}</p>
+                        </div> 
                     </div>
-                </li> 
+                </li>  -->
 
 
             </ul>
