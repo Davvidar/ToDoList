@@ -1,49 +1,18 @@
 
-
-
-@-webkit-keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--hover);
-  }
+.item .details i.brand-icon {
+  padding:5px;
+  margin-right: 12px;
+  border-radius: 50%;
 }
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--hover);
-  }
+.item .details span {
+  font-size: 1.13rem;
 }
-
-
-.offset {
-  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
+.item i {
+  font-size: 1.13rem;
 }
-.offset:hover, .offset:focus {
-  box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
+.item.dragging {
+  opacity: 0.6;
 }
-
-
-.offset {
-  --color: #3200e4;
-  --hover: #1973bc;
+.item.dragging :where(.details, i) {
+  opacity: 0;
 }
-
-button {
-  color: var(--color);
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-  border-radius: 14px;
-}
-button:hover, button:focus {
-  border-color: var(--hover);
-  color: #fff;
-}
-
-button {
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-}
-

@@ -21,17 +21,23 @@ function addTask(task, id, realizado, eliminado, descripcion) {
     const LINE = realizado ?linteThrough : ''
 
     const liElement = `
-        <li id="liElement">
-            <i class="far ${REALIZADO}" data="realizado" id='${id}'></i>
-            <p class="text ${LINE}" data-id="${id}">${task}</p>
-            <i class="fas fa-trash de" data="eliminado" id='${id}'></i>
-            <div class="dropdown">
-                <button class="offset dropbtn">Descripción</button>
-                <div class="dropdown-content">
-                <p class="task-description" data-id="${id}">${descripcion}</p>
+                <li class="item half" draggable="true" id="liElement">
+                    <i class="fas fa-grip-lines"></i>
+                    <i class=" far ${REALIZADO}" data="realizado" id='${id}'></i>
+
+                    <div class="tab details">
+                        <input id="tab${id}" type="checkbox" name="tabs">
+                            <label for="tab${id}">
+                                 <p class="text ${LINE}" data-id="${id}">${task}</p>
+                            </label>
+                    <div class="tab-content">
+                     <p class="text ${LINE}" data-id="${id}">${descripcion}</p>
+                        
+                    </div>
                 </div>
-            </div>
-        </li>    
+                    <i class="far fa-edit"></i>
+                    <i class="fas fa-trash de" data="eliminado" id='${id}'></i>
+                  </li>   
     `;
     list.insertAdjacentHTML("beforeend", liElement);
 }
@@ -42,6 +48,7 @@ btnEnter.addEventListener('click', () => {
     if (task) {
         addTask(task, id, false, false, descripcion);
         listArray.push({
+            
             nombre: task,
             id: id,
             realizado: false,
@@ -62,6 +69,7 @@ document.addEventListener('keyup', function (event) {
         if (task) {
             addTask(task, id, false, false, descripcion);
             listArray.push({
+                
                 nombre: task,
                 id: id,
                 realizado: false,
@@ -98,6 +106,16 @@ function taskUndone(element) {
     element.parentNode.parentNode.removeChild(element.parentNode);
     listArray[element.id].eliminado = true;
 }
+// Obtener el nombre de usuario almacenado en el almacenamiento de sesión
+
+let username = sessionStorage.getItem('username');
+
+// Actualizar el mensaje de bienvenida en el perfil
+if (username) {
+    document.getElementById('welcomeMessage').innerText = 'Hola, ' + username + '!';
+}
+
+
 
 let data = localStorage.getItem('ToDo');
 if (data) {
@@ -114,3 +132,7 @@ function loadList(DATA) {
         addTask(i.nombre, i.id, i.realizado, i.eliminado, i.descripcion);
     });
 }
+
+
+
+

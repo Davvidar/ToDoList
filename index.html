@@ -15,13 +15,13 @@
     <div class="container">
 
         <div class="profile">
-
-            <div id="date-sec"><!-- Miercoles 13 de diciembre --></div>
-            <h1>Hola...</h1>
-            <span>Registro de tareas</span>
+            <a href="login.html">Iniciar Sesión</a>
+            <div id="date-sec"><!-- fecha --></div>
+            <h1 id="welcomeMessage"></h1>
+            <span>Este es tu registro de tareas</span>
         </div>
         <div class="add-task">
-            <input type="text" id="input" placeholder="Tarea">
+            <input type="text" id="input" placeholder="Tarea" required>
             <input type="text" id="inputD" placeholder="Descripción ">
             <i id="enter" class="fa fa-plus-circle"></i>
         </div>
@@ -30,28 +30,14 @@
 
             <h3>Tareas pendientes</h3>
 
-            <ul id="task-list">
-
-               <!-- <li id="liElement">
-                    <i class="far ${REALIZADO}" data="realizado" id='${id}'></i>
-                    <p class="text ${LINE}" data-id="${id}">${task}</p>
-                    <i class="fas fa-trash de" data="eliminado" id='${id}'></i>
-                    <div class="dropdown">
-                        <button class="offset dropbtn">Descripción</button>
-                        <div class="dropdown-content">
-                            <p class="text ${LINE}" data-id="${id}">${descripcion}</p>
-                        </div> 
-                    </div>
-                </li>  -->
-
+            <ul id="task-list" class="sortable-list">
 
             </ul>
+
         </div>
-
-
     </div>
     <script src="script.js"></script>
-
+    <script src="sources/drag.js"></script>
 </body>
 
 </html>
