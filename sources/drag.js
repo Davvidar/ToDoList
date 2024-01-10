@@ -8,6 +8,7 @@ items.forEach(item => {
   });
   // Removing dragging class from the item on the dragend event
   item.addEventListener("dragend", () => item.classList.remove("dragging"));
+  localStorage.setItem('ToDo', JSON.stringify(listArray));
 });
 
 const initSortableList = (e) => {
@@ -23,7 +24,9 @@ const initSortableList = (e) => {
 
   // Inserting the dragging item before the found sibling
   sortableList.insertBefore(draggingItem, nextSibling);
+  localStorage.setItem('ToDo', JSON.stringify(listArray));
 }
 
 sortableList.addEventListener("dragover", initSortableList);
 sortableList.addEventListener("dragenter", e => e.preventDefault());
+

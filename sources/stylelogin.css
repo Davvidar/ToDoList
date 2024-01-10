@@ -1,0 +1,51 @@
+/* Estilos para el contenedor principal */
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el título "Iniciar Sesión" */
+.login-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Estilos para el formulario */
+#loginForm {
+    margin-top: 20px;
+}
+
+/* Estilos para las etiquetas del formulario */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Estilos para los campos de entrada */
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos adicionales para el botón al pasar el mouse sobre él */
+button:hover {
+    background-color: #0056b3;
+}

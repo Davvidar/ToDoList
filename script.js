@@ -1,11 +1,11 @@
 const date = document.querySelector("#date-sec")
 const list = document.querySelector("#task-list")
 const input = document.querySelector("#input")
-const descripcionInpunt = document.querySelector('#inputD')
+const descriptionInput = document.querySelector('#inputD')
 const btnEnter = document.querySelector("#enter")
 const check = 'fa-check-circle'
 const uncheck = 'fa-circle'
-const linteThrough = 'line-through'
+const lineT = 'lineT'
 let id 
 let listArray
 
@@ -14,16 +14,16 @@ const DATE = new Date()
 date.innerHTML = DATE.toLocaleDateString('es-ES', { weekday: 'long', month: 'short', day: 'numeric' })
 
 // ADD TASKS //
-function addTask(task, id, realizado, eliminado, descripcion) {
-    if (eliminado) { return; }
+function addTask(task, id, done, removed, description) {
+    if (removed) { return; }
 
-    const REALIZADO = realizado ?check : uncheck
-    const LINE = realizado ?linteThrough : ''
+    const DONE = done ?check : uncheck
+    const LINE = done ?lineT : ''
 
     const liElement = `
                 <li class="item half" draggable="true" id="liElement">
                     <i class="fas fa-grip-lines"></i>
-                    <i class=" far ${REALIZADO}" data="realizado" id='${id}'></i>
+                    <i class=" far ${DONE}" data="done" id='${id}'></i>
 
                     <div class="tab details">
                         <input id="tab${id}" type="checkbox" name="tabs">
@@ -31,12 +31,12 @@ function addTask(task, id, realizado, eliminado, descripcion) {
                                  <p class="text ${LINE}" data-id="${id}">${task}</p>
                             </label>
                     <div class="tab-content">
-                     <p class="text ${LINE}" data-id="${id}">${descripcion}</p>
+                     <p class="text ${LINE}" data-id="${id}">${description}</p>
                         
                     </div>
                 </div>
-                    <i class="far fa-edit"></i>
-                    <i class="fas fa-trash de" data="eliminado" id='${id}'></i>
+                    <i class="far fa-edit" onclick="openModal()"></i>
+                    <i class="fas fa-trash de" data="removed" id='${id}'></i>
                   </li>   
     `;
     list.insertAdjacentHTML("beforeend", liElement);
@@ -44,20 +44,20 @@ function addTask(task, id, realizado, eliminado, descripcion) {
 
 btnEnter.addEventListener('click', () => {
     const task = input.value;
-    const descripcion = descripcionInpunt.value;
+    const description = descriptionInput.value;
     if (task) {
-        addTask(task, id, false, false, descripcion);
+        addTask(task, id, false, false, description);
         listArray.push({
             
-            nombre: task,
+            name: task,
             id: id,
-            realizado: false,
-            eliminado: false,
-            descripcion: descripcion
+            done: false,
+            removed: false,
+            description: description
         });
         localStorage.setItem('ToDo', JSON.stringify(listArray));
         input.value = "";
-        descripcionInpunt.value = ""
+        descriptionInput.value = ""
         id++;
     }
 });
@@ -65,20 +65,20 @@ btnEnter.addEventListener('click', () => {
 document.addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
         const task = input.value;
-        const descripcion = descripcionInpunt.value;
+        const description = descriptionInput.value;
         if (task) {
-            addTask(task, id, false, false, descripcion);
+            addTask(task, id, false, false, description);
             listArray.push({
                 
-                nombre: task,
+                name: task,
                 id: id,
-                realizado: false,
-                eliminado: false,
-                descripcion: descripcion
+                done: false,
+                removed: false,
+                description: description
             });
             localStorage.setItem('ToDo', JSON.stringify(listArray));
             input.value = "";
-            descripcionInpunt.value = ""
+            descriptionInput.value = ""
             id++;
         }
     }
@@ -87,16 +87,16 @@ document.addEventListener('keyup', function (event) {
 function taskDone(element) {
     element.classList.toggle(check);
     element.classList.toggle(uncheck);
-    element.parentNode.querySelector('.text').classList.toggle(linteThrough);
-    listArray[element.id].realizado = listArray[element.id].realizado ? false : true;
+    element.parentNode.querySelector('.text').classList.toggle(lineT);
+    listArray[element.id].done = listArray[element.id].done ? false : true;
 }
 
 list.addEventListener('click', function (event) {
     const element = event.target;
     const elementData = element.attributes.data.value;
-    if (elementData === 'realizado') {
+    if (elementData === 'done') {
         taskDone(element);
-    } else if (elementData === 'eliminado') {
+    } else if (elementData === 'removed') {
         taskUndone(element);
     }
     localStorage.setItem('ToDo', JSON.stringify(listArray));
@@ -104,9 +104,9 @@ list.addEventListener('click', function (event) {
 
 function taskUndone(element) {
     element.parentNode.parentNode.removeChild(element.parentNode);
-    listArray[element.id].eliminado = true;
+    listArray[element.id].removed = true;
 }
-// Obtener el nombre de usuario almacenado en el almacenamiento de sesión
+// Obtener el name de usuario almacenado en el almacenamiento de sesión
 
 let username = sessionStorage.getItem('username');
 
@@ -129,10 +129,31 @@ if (data) {
 
 function loadList(DATA) {
     DATA.forEach(function (i) {
-        addTask(i.nombre, i.id, i.realizado, i.eliminado, i.descripcion);
+        addTask(i.name, i.id, i.done, i.removed, i.description);
     });
 }
 
+//MODAL
+function openModal() {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
+
+function guardarTarea() {
+    let taskModal = document.getElementById('tarea').value;
+    let descripion = document.getElementById('descripcion').value;
+
+    console.log('Tarea:', tarea);
+    console.log('Descripción:', descripcion);
+
+    // Cerrar el modal después de guardar
+    closeModal();
+}
 
 
 

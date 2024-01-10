@@ -36,7 +36,21 @@
 
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="overlay" id="overlay" onclick="closeModal()"></div>
+
+    <div class="modal" id="modal">
+        <h2>Nueva Tarea</h2>
+        <label for="tarea">Tarea:</label>
+        <input type="text" id="tarea" placeholder="Ingrese la tarea">
+    
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" placeholder="Ingrese la descripción">
+    
+        <button onclick="guardarTarea()">Guardar</button>
+        <button onclick="closeModal()">Cancelar</button>
+    </div>
+    <script src="script.js" defer></script>
     <script src="sources/drag.js"></script>
 </body>
 

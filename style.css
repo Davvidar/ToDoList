@@ -108,14 +108,75 @@ margin: 6px;
     font-size: 1.2rem;
     
 }
-.line-through{
+.lineT{
 text-decoration: line-through rgb(234, 234, 234);
 color:var(--marin);
 opacity: 0.5;
 
 }
+/* Modal */
+/* Estilos para el overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
 
+/* Estilos para el modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
 
+/* Estilos para el título del modal */
+.modal h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* Estilos para las etiquetas y campos de entrada del modal */
+.modal label, .modal input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Estilos para los botones del modal */
+.modal button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos adicionales para los botones al pasar el mouse sobre ellos */
+.modal button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .modal {
+      width: 90%;
+  }
+}
 
 /* Desplegable */
 .task-description{
